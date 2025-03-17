@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: vinsensiusf/demo-fe:v4
+          image: vinsensiusf/demo-fe:v6
           ports:
             - containerPort: 8081
           env:
