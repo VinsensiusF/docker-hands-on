@@ -15,17 +15,33 @@ spec:
     spec:
       containers:
         - name: backend
-          image: vinsensiusf/demo-be:v1
+          image: beastonking/sharing-be:kubernetes
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
-            - name: NODE_ENV
-              value: "production"
             - name: DB_USER
-              value: "postgres"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
             - name: DB_PASSWORD
-              value: "postgres"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
             - name: DB_NAME
-              value: "mydatabase"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_DB
             - name: DB_HOST
-              value: "postgres"
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: DB_PORT
