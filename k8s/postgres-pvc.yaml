@@ -4,8 +4,10 @@ metadata:
   name: postgres-pvc
   namespace: myapp
 spec:
+  volumeName: postgres-pv
   accessModes:
     - ReadWriteOnce
+  storageClassName: standard
   resources:
     requests:
       storage: 1Gi

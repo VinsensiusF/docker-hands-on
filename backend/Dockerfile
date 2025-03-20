@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:18
+FROM node:18-slim
 
 # Set the working directory
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
-# Expose port 8080
+# Documents the exposed port 8080
 EXPOSE 8080
 
 # Command to start the app
